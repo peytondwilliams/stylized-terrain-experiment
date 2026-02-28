@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://d24oys5qq6wpl"]
+
+[ext_resource type="Image" uid="uid://dq3pop152arfh" path="res://scenes/levels/Level1/Color_0_0.res" id="1_6iamk"]
+[ext_resource type="Texture2D" uid="uid://q6je6qd8fhiw" path="res://assets/ground_with_rocks_01_1k/ground_with_rocks_01_color_1k.png" id="1_iav0o"]
+[ext_resource type="Image" uid="uid://cjbetw02272ib" path="res://scenes/levels/Level1/Heightmap_0_0.res" id="1_ksju7"]
+[ext_resource type="Texture2D" uid="uid://ssloba8x35ld" path="res://assets/ground_with_rocks_01_1k/ground_with_rocks_01_height_1k.png" id="2_dnkej"]
+[ext_resource type="Texture2D" uid="uid://b0hi6xc8a8kya" path="res://assets/ground_with_rocks_01_1k/ground_with_rocks_01_normal_gl_1k.png" id="3_mm8aj"]
+[ext_resource type="PackedScene" uid="uid://6641ujmf5rw" path="res://scenes/player/player.tscn" id="3_nsrm0"]
+[ext_resource type="Texture2D" uid="uid://cna7xk3ydah53" path="res://assets/ground_with_rocks_01_1k/ground_with_rocks_01_roughness_1k.png" id="4_wtwp4"]
+[ext_resource type="Texture2D" uid="uid://b8m3hhgn4qoar" path="res://assets/grass_01_1k/grass_01_color_1k.png" id="5_iwr0g"]
+[ext_resource type="Texture2D" uid="uid://doycm736s23j3" path="res://assets/grass_01_1k/grass_01_height_1k.png" id="6_bahl2"]
+[ext_resource type="Texture2D" uid="uid://cero0orv52i7t" path="res://assets/grass_01_1k/grass_01_normal_gl_1k.png" id="7_np2pn"]
+[ext_resource type="Texture2D" uid="uid://dtloa12jyafc" path="res://assets/grass_01_1k/grass_01_roughness_1k.png" id="8_v6ha0"]
+[ext_resource type="Image" uid="uid://b1jea3j8ewoq8" path="res://scenes/levels/Level1/Splatmap_0_0_0.res" id="11_gmpev"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6iamk"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_nsrm0"]
+sky_material = SubResource("ProceduralSkyMaterial_6iamk")
+
+[sub_resource type="Environment" id="Environment_x42e6"]
+background_mode = 2
+sky = SubResource("Sky_nsrm0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="TextureSetResource" id="TextureSetResource_mkypq"]
+name = "test"
+albedoTexture = ExtResource("1_iav0o")
+normalTexture = ExtResource("3_mm8aj")
+roughnessTexture = ExtResource("4_wtwp4")
+heightTexture = ExtResource("2_dnkej")
+textureDetail = 40
+
+[sub_resource type="TextureSetResource" id="TextureSetResource_ndtll"]
+name = "test2"
+albedoTexture = ExtResource("5_iwr0g")
+normalTexture = ExtResource("7_np2pn")
+roughnessTexture = ExtResource("8_v6ha0")
+heightTexture = ExtResource("6_bahl2")
+textureDetail = 40
+
+[sub_resource type="TextureSetsResource" id="TextureSetsResource_7h2jl"]
+textureSets = Array[TextureSetResource]([SubResource("TextureSetResource_mkypq"), SubResource("TextureSetResource_ndtll")])
+
+[sub_resource type="ZoneResource" id="ZoneResource_6iamk"]
+heightMapImage = ExtResource("1_ksju7")
+colorImage = ExtResource("1_6iamk")
+splatmapsImage = Array[Image]([ExtResource("11_gmpev")])
+
+[sub_resource type="ZonesResource" id="ZonesResource_nsrm0"]
+zones = Array[ZoneResource]([SubResource("ZoneResource_6iamk")])
+
+[node name="Level1" type="Node3D" unique_id=1664839908]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=905277645]
+environment = SubResource("Environment_x42e6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1545938344]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="TerraBrush" type="TerraBrush" parent="." unique_id=1759403556]
+dataPath = "res://scenes/levels/Level1"
+textureSets = SubResource("TextureSetsResource_7h2jl")
+terrainZones = SubResource("ZonesResource_nsrm0")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=810341318 instance=ExtResource("3_nsrm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.63039, 0, 24.390488)

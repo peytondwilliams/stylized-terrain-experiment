@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://6641ujmf5rw"]
+
+[ext_resource type="Script" uid="uid://bgpgad1n3qd66" path="res://scenes/player/player.gd" id="1_f8fde"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2jd3k"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nwea2"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8prxc"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Player" type="CharacterBody3D" unique_id=810341318]
+script = ExtResource("1_f8fde")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2022130669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_2jd3k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=580199492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_nwea2")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1752195941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=2133741846]
+transform = Transform3D(1, 0, 0, 0, 0.9777613, 0.20972098, 0, -0.20972098, 0.9777613, 0.3404951, 1.1355112, 2.157385)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=416885906]
+replication_config = SubResource("SceneReplicationConfig_8prxc")
