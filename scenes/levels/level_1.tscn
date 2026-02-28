@@ -32,7 +32,6 @@ albedoTexture = ExtResource("1_iav0o")
 normalTexture = ExtResource("3_mm8aj")
 roughnessTexture = ExtResource("4_wtwp4")
 heightTexture = ExtResource("2_dnkej")
-textureDetail = 40
 
 [sub_resource type="TextureSetResource" id="TextureSetResource_ndtll"]
 name = "test2"
@@ -40,7 +39,6 @@ albedoTexture = ExtResource("5_iwr0g")
 normalTexture = ExtResource("7_np2pn")
 roughnessTexture = ExtResource("8_v6ha0")
 heightTexture = ExtResource("6_bahl2")
-textureDetail = 40
 
 [sub_resource type="TextureSetsResource" id="TextureSetsResource_7h2jl"]
 textureSets = Array[TextureSetResource]([SubResource("TextureSetResource_mkypq"), SubResource("TextureSetResource_ndtll")])
@@ -65,6 +63,7 @@ shadow_enabled = true
 [node name="TerraBrush" type="TerraBrush" parent="." unique_id=1759403556]
 dataPath = "res://scenes/levels/Level1"
 textureSets = SubResource("TextureSetsResource_7h2jl")
+textureDetail = 40
 terrainZones = SubResource("ZonesResource_nsrm0")
 metadata/_edit_lock_ = true
 
