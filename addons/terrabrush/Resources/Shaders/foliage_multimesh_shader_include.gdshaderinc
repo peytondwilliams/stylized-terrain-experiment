@@ -7,7 +7,7 @@ uniform int LODRowsPerLevel = 10;
 uniform int LODLevels = 5;
 uniform float WindStrength = 0.1;
 uniform vec4 FoliageAlbedo: source_color = vec4(1.0);
-uniform sampler2DArray FoliageAlbedoTextures: source_color, hint_default_white, repeat_disable;
+uniform sampler2DArray FoliageAlbedoTextures: source_color, hint_default_white, repeat_disable, filter_linear_mipmap;
 uniform sampler2DArray FoliageAlbedoTexturesNearest: source_color, hint_default_white, repeat_disable, filter_nearest_mipmap;
 uniform int FoliageNumberOfTexture;
 uniform bool UseGroundColor = true;
@@ -328,6 +328,7 @@ void calculateFoliageFragment(vec2 uv, vec4 color, vec3 instancePosition, out ve
 
 	albedo = color.rgb * albedoTexture.rgb * FoliageAlbedo.rgb;
 	alpha = FoliageAlbedo.a * albedoTexture.a;
+
 	alphaScissorThreshold = 0.01;
 	alphaAntiAliasingEdge = 0.5;
 }

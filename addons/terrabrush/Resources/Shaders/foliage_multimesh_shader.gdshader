@@ -14,6 +14,7 @@ void vertex() {
 		COLOR,
 		_instancePosition
 	);
+
 }
 
 void fragment() {
@@ -26,4 +27,8 @@ void fragment() {
 		ALPHA_SCISSOR_THRESHOLD,
 		ALPHA_ANTIALIASING_EDGE
 	);
+		
+	if(!FRONT_FACING) {
+		NORMAL = -NORMAL;
+	}
 }
