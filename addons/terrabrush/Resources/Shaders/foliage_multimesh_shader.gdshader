@@ -18,6 +18,7 @@ void vertex() {
 }
 
 void fragment() {
+	float fake = 0.0;
 	calculateFoliageFragment(
 		UV,
 		COLOR,
@@ -25,7 +26,7 @@ void fragment() {
 		ALBEDO,
 		ALPHA, 
 		ALPHA_SCISSOR_THRESHOLD,
-		ALPHA_ANTIALIASING_EDGE
+		fake
 	);
 		
 	if(!FRONT_FACING) {

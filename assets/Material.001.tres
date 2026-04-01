@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://c1yfewd1rdv81"]
 
-[ext_resource type="Texture2D" uid="uid://debrf63tjsaij" path="res://assets/grass_grass1.png" id="1_fcj5y"]
+[ext_resource type="Texture2D" uid="uid://iufkhqdhvtf" path="res://assets/grass.dds" id="1_fcj5y"]
 
 [sub_resource type="Shader" id="Shader_fcj5y"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.6.1.stable's StandardMaterial3D.

@@ -329,6 +329,6 @@ void calculateFoliageFragment(vec2 uv, vec4 color, vec3 instancePosition, out ve
 	albedo = color.rgb * albedoTexture.rgb * FoliageAlbedo.rgb;
 	alpha = FoliageAlbedo.a * albedoTexture.a;
 
-	alphaScissorThreshold = 0.01;
-	alphaAntiAliasingEdge = 0.5;
+	alphaScissorThreshold = 0.99;
+	alphaAntiAliasingEdge = 0.01;
 }
